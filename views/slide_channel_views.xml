@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="slide_channel_view_form_grading" model="ir.ui.view">
+        <field name="name">slide.channel.form.cedl.grading</field>
+        <field name="model">slide.channel</field>
+        <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Avaliação" name="cedl_evaluation">
+                    <group>
+                        <group string="Escala de notas">
+                            <field name="grade_min"/>
+                            <field name="grade_max"/>
+                        </group>
+                        <group string="Aprovação">
+                            <field name="passing_grade"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

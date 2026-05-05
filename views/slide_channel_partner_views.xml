@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="slide_channel_partner_view_list_grading" model="ir.ui.view">
+        <field name="name">slide.channel.partner.list.cedl.grading</field>
+        <field name="model">slide.channel.partner</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" string="Notas">
+                <field name="partner_id"/>
+                <field name="channel_id"/>
+                <field name="grade_p1"/>
+                <field name="grade_p2"/>
+                <field name="grade_p3"/>
+                <field name="grade_p4"/>
+                <field name="grade_average" readonly="1"/>
+                <field name="grade_status" readonly="1" decoration-success="grade_status == 'passed'" decoration-danger="grade_status == 'failed'" decoration-muted="grade_status == 'pending'" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="slide_channel_partner_view_form_grading" model="ir.ui.view">
+        <field name="name">slide.channel.partner.form.cedl.grading</field>
+        <field name="model">slide.channel.partner</field>
+        <field name="arch" type="xml">
+            <form string="Notas do aluno">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="channel_id" readonly="1"/>
+                            <field name="member_status" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="grade_average" readonly="1"/>
+                            <field name="grade_status" readonly="1" widget="badge" decoration-success="grade_status == 'passed'" decoration-danger="grade_status == 'failed'" decoration-muted="grade_status == 'pending'"/>
+                        </group>
+                    </group>
+                    <group string="Notas por bimestre">
+                        <field name="grade_p1"/>
+                        <field name="grade_p2"/>
+                        <field name="grade_p3"/>
+                        <field name="grade_p4"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="slide_channel_partner_view_search_grading" model="ir.ui.view">
+        <field name="name">slide.channel.partner.search.cedl.grading</field>
+        <field name="model">slide.channel.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="channel_id"/>
+                <filter name="status_pending" string="Em andamento"
+                        domain="[('grade_status', '=', 'pending')]"/>
+                <filter name="status_passed" string="Aprovado"
+                        domain="[('grade_status', '=', 'passed')]"/>
+                <filter name="status_failed" string="Reprovado"
+                        domain="[('grade_status', '=', 'failed')]"/>
+                <separator/>
+                <filter name="group_channel" string="Curso"
+                        context="{'group_by': 'channel_id'}"/>
+                <filter name="group_status" string="Situação"
+                        context="{'group_by': 'grade_status'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_slide_channel_partner_grading" model="ir.actions.act_window">
+        <field name="name">Notas</field>
+        <field name="res_model">slide.channel.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('slide_channel_partner_view_list_grading')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('slide_channel_partner_view_form_grading')}),
+        ]"/>
+        <field name="search_view_id" ref="slide_channel_partner_view_search_grading"/>
+        <field name="context">{'search_default_group_channel': 1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+{
+    'name': 'CEDL E-Learning',
+    'version': '19.0.1.0.0',
+    'summary': 'Aba de Notas para professores: 4 períodos, média e aprovação por turma',
+    'category': 'eLearning',
+    'author': 'CE Dias Lima',
+    'website': 'https://c-edl.com',
+    'license': 'LGPL-3',
+    'depends': ['website_slides', 'mail'],
+    'data': [
+        'security/groups.xml',
+        'security/ir.model.access.csv',
+        'security/ir_rules.xml',
+        'views/slide_channel_views.xml',
+        'views/slide_channel_partner_views.xml',
+        'views/menus.xml',
+    ],
+    'post_init_hook': 'post_init_sync_professors',
+    'application': True,
+    'installable': True,
+}

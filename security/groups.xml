@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_cedl_elearning" model="ir.module.category">
+        <field name="name">CEDL E-Learning</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="privilege_cedl_elearning" model="res.groups.privilege">
+        <field name="name">CEDL E-Learning</field>
+        <field name="category_id" ref="module_category_cedl_elearning"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="group_professor" model="res.groups">
+        <field name="name">Professor</field>
+        <field name="privilege_id" ref="privilege_cedl_elearning"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Permite ao usuário lançar e editar notas dos alunos
+            nas turmas. Sincronizado automaticamente com a tag "Professor"
+            em res.partner.category.</field>
+    </record>
+</odoo>

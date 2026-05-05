@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_root_cedl_elearning"
+        name="CEDL E-Learning"
+        groups="group_professor"
+        sequence="50"
+        web_icon="cedl_elearning,static/description/icon.png"/>
+
+    <menuitem
+        id="menu_grades"
+        name="Notas"
+        parent="menu_root_cedl_elearning"
+        action="action_slide_channel_partner_grading"
+        sequence="10"/>
+</odoo>

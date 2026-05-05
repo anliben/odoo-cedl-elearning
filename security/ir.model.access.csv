@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_slide_channel_partner_professor,Professor pode ler/editar matrícula,website_slides.model_slide_channel_partner,group_professor,1,1,0,0
+access_slide_channel_partner_portal,Portal pode ler própria matrícula,website_slides.model_slide_channel_partner,base.group_portal,1,0,0,0
+access_slide_channel_professor,Professor pode ler curso,website_slides.model_slide_channel,group_professor,1,0,0,0
