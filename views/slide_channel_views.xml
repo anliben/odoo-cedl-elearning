@@ -8,6 +8,11 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Avaliação" name="cedl_evaluation">
                     <group>
+                        <group string="Turma">
+                            <field name="turma_id"/>
+                        </group>
+                    </group>
+                    <group>
                         <group string="Escala de notas">
                             <field name="grade_min"/>
                             <field name="grade_max"/>

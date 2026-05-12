@@ -4,6 +4,13 @@ from odoo import fields, models
 class SlideChannel(models.Model):
     _inherit = 'slide.channel'
 
+    turma_id = fields.Many2one(
+        'cedl.turma',
+        string='Turma',
+        index=True,
+        ondelete='restrict',
+    )
+
     grade_min = fields.Float(
         string='Nota mínima da escala',
         default=0.0,

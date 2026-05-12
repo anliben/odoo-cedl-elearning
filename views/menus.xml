@@ -11,6 +11,27 @@
         id="menu_grades"
         name="Notas"
         parent="menu_root_cedl_elearning"
-        action="action_slide_channel_partner_grading"
+        action="action_cedl_nota"
         sequence="10"/>
+
+    <menuitem
+        id="menu_cadastros"
+        name="Cadastros"
+        parent="menu_root_cedl_elearning"
+        groups="base.group_system"
+        sequence="90"/>
+
+    <menuitem
+        id="menu_cadastros_turmas"
+        name="Turmas"
+        parent="menu_cadastros"
+        action="action_cedl_turma"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_cadastros_materias"
+        name="Matérias"
+        parent="menu_cadastros"
+        action="action_cedl_materia"
+        sequence="20"/>
 </odoo>

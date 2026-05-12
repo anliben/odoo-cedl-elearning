@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="slide_slide_view_form_materia" model="ir.ui.view">
+        <field name="name">slide.slide.form.cedl.materia</field>
+        <field name="model">slide.slide</field>
+        <field name="inherit_id" ref="website_slides.view_slide_slide_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='channel_id']" position="after">
+                <field name="materia_id"
+                       options="{'no_create_edit': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="slide_slide_view_list_materia" model="ir.ui.view">
+        <field name="name">slide.slide.list.cedl.materia</field>
+        <field name="model">slide.slide</field>
+        <field name="inherit_id" ref="website_slides.view_slide_slide_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='channel_id']" position="after">
+                <field name="materia_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

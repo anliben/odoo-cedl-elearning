@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cedl_nota_view_list" model="ir.ui.view">
+        <field name="name">cedl.nota.list</field>
+        <field name="model">cedl.nota</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" string="Boletim">
+                <field name="turma_id" optional="show"/>
+                <field name="materia_id" optional="show"/>
+                <field name="partner_id"/>
+                <field name="grade_p1"/>
+                <field name="grade_p2"/>
+                <field name="grade_p3"/>
+                <field name="grade_p4"/>
+                <field name="grade_average" readonly="1"/>
+                <field name="grade_status" readonly="1" widget="badge"
+                       decoration-success="grade_status == 'passed'"
+                       decoration-danger="grade_status == 'failed'"
+                       decoration-muted="grade_status == 'pending'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="cedl_nota_view_form" model="ir.ui.view">
+        <field name="name">cedl.nota.form</field>
+        <field name="model">cedl.nota</field>
+        <field name="arch" type="xml">
+            <form string="Boletim do aluno">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="turma_id" readonly="1"/>
+                            <field name="materia_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="grade_average" readonly="1"/>
+                            <field name="grade_status" readonly="1" widget="badge"
+                                   decoration-success="grade_status == 'passed'"
+                                   decoration-danger="grade_status == 'failed'"
+                                   decoration-muted="grade_status == 'pending'"/>
+                        </group>
+                    </group>
+                    <group string="Notas por bimestre">
+                        <field name="grade_p1"/>
+                        <field name="grade_p2"/>
+                        <field name="grade_p3"/>
+                        <field name="grade_p4"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="cedl_nota_view_search" model="ir.ui.view">
+        <field name="name">cedl.nota.search</field>
+        <field name="model">cedl.nota</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="turma_id"/>
+                <field name="materia_id"/>
+                <filter name="status_pending" string="Em andamento"
+                        domain="[('grade_status', '=', 'pending')]"/>
+                <filter name="status_passed" string="Aprovado"
+                        domain="[('grade_status', '=', 'passed')]"/>
+                <filter name="status_failed" string="Reprovado"
+                        domain="[('grade_status', '=', 'failed')]"/>
+                <separator/>
+                <filter name="group_turma" string="Turma"
+                        context="{'group_by': 'turma_id'}"/>
+                <filter name="group_materia" string="Matéria"
+                        context="{'group_by': 'materia_id'}"/>
+                <filter name="group_status" string="Situação"
+                        context="{'group_by': 'grade_status'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_cedl_nota" model="ir.actions.act_window">
+        <field name="name">Notas</field>
+        <field name="res_model">cedl.nota</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="cedl_nota_view_search"/>
+        <field name="context">{'search_default_group_turma': 1, 'search_default_group_materia': 1}</field>
+    </record>
+</odoo>
