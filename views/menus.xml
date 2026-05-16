@@ -18,7 +18,7 @@
         id="menu_cadastros"
         name="Cadastros"
         parent="menu_root_cedl_elearning"
-        groups="base.group_system"
+        groups="group_professor"
         sequence="90"/>
 
     <menuitem
