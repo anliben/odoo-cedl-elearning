@@ -19,10 +19,9 @@ class CedlMateria(models.Model):
     )
     turma_count = fields.Integer(compute='_compute_turma_count')
 
-    _name_unique = models.Constraint(
-        'UNIQUE (name)',
-        'Já existe uma matéria com esse nome.',
-    )
+    _sql_constraints = [
+        ('name_unique', 'UNIQUE (name)', 'Já existe uma matéria com esse nome.'),
+    ]
 
     @api.depends('turma_ids')
     def _compute_turma_count(self):

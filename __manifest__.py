@@ -1,6 +1,6 @@
 {
     'name': 'CEDL E-Learning',
-    'version': '19.0.3.1.0',
+    'version': '17.0.1.0.0',
     'summary': 'Boletim por matéria: 4 bimestres, média e aprovação configuráveis',
     'category': 'eLearning',
     'author': 'CE Dias Lima',

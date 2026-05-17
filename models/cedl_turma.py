@@ -19,10 +19,9 @@ class CedlTurma(models.Model):
         string='Matérias',
     )
 
-    _name_unique = models.Constraint(
-        'UNIQUE (name)',
-        'Já existe uma turma com esse nome.',
-    )
+    _sql_constraints = [
+        ('name_unique', 'UNIQUE (name)', 'Já existe uma turma com esse nome.'),
+    ]
 
     @api.depends('channel_ids')
     def _compute_channel_count(self):

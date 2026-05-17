@@ -30,7 +30,7 @@ class ResPartner(models.Model):
             if not users:
                 continue
             should_have = tag in partner.category_id
-            in_group = users.filtered(lambda u: group in u.group_ids)
+            in_group = users.filtered(lambda u: group in u.groups_id)
             if should_have:
                 missing = users - in_group
                 if missing:

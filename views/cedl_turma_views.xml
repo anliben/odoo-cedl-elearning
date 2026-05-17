@@ -4,13 +4,13 @@
         <field name="name">cedl.turma.list</field>
         <field name="model">cedl.turma</field>
         <field name="arch" type="xml">
-            <list string="Turmas">
+            <tree string="Turmas">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="materia_ids" widget="many2many_tags"/>
                 <field name="channel_count" string="Cursos"/>
                 <field name="active" optional="hide"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -34,9 +34,9 @@
                         </page>
                         <page string="Cursos" name="cursos">
                             <field name="channel_ids" readonly="1">
-                                <list>
+                                <tree>
                                     <field name="name"/>
-                                </list>
+                                </tree>
                             </field>
                         </page>
                     </notebook>
@@ -61,6 +61,6 @@
     <record id="action_cedl_turma" model="ir.actions.act_window">
         <field name="name">Turmas</field>
         <field name="res_model">cedl.turma</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

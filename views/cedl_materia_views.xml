@@ -4,13 +4,13 @@
         <field name="name">cedl.materia.list</field>
         <field name="model">cedl.materia</field>
         <field name="arch" type="xml">
-            <list string="Matérias">
+            <tree string="Matérias">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="turma_ids" widget="many2many_tags"/>
                 <field name="turma_count" string="Turmas"/>
                 <field name="active" optional="hide"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -55,6 +55,6 @@
     <record id="action_cedl_materia" model="ir.actions.act_window">
         <field name="name">Matérias</field>
         <field name="res_model">cedl.materia</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

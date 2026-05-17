@@ -60,10 +60,11 @@ class CedlNota(models.Model):
         default='pending',
     )
 
-    _unique_matricula_materia = models.Constraint(
-        'UNIQUE (channel_partner_id, materia_id)',
-        'Já existe um boletim para esta matrícula nesta matéria.',
-    )
+    _sql_constraints = [
+        ('unique_matricula_materia',
+         'UNIQUE (channel_partner_id, materia_id)',
+         'Já existe um boletim para esta matrícula nesta matéria.'),
+    ]
 
     @api.depends('channel_partner_id.partner_id', 'materia_id', 'turma_id')
     def _compute_display_name(self):
